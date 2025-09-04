@@ -62,40 +62,13 @@ graph LR
 ### Sample SQL Queries:
 
 #### 1. Generate Embeddings
-```sql
-CREATE OR REPLACE TABLE `project.dataset.covid_with_embeddings` AS
-SELECT
-  *,
-  ML.GENERATE_EMBEDDING(
-    MODEL `project.dataset.text_embedding_gecko_model`,
-    content
-  ) AS embedding
-FROM `project.dataset.covid_data`;
-```
+
 
 #### 2. Semantic Search
-```sql
-SELECT
-  base.unique_id,
-  distance AS cosine_similarity  
-FROM VECTOR_SEARCH(
-  TABLE `project.dataset.covid_with_embeddings`,
-  'embedding',
-  (SELECT embedding FROM `project.dataset.query_embeddings` WHERE id = 'user_query'),
-  top_k => 10
-);
-```
+
 
 #### 3. AI Insight Generation
-```sql
-SELECT
-  prompt,
-  JSON_VALUE(ml_generate_text_result, '$.candidates[0].content') AS ai_summary
-FROM ML.GENERATE_TEXT(
-  MODEL `project.dataset.gemini_pro_model`,
-  TABLE search_results_with_prompts
-);
-```
+
 
 ---
 
@@ -118,13 +91,10 @@ FROM ML.GENERATE_TEXT(
 ##  Demo & Resources
 
 ###  Documentation
-- [Kaggle Notebook] (https://www.kaggle.com/code/kavindhiranc/semantic-covid19-bigquery-ai-hackathon) - Complete implementation with code
-- [Presentation Slides](presentation-slides.md) - Project overview and results
-- [Demo Video Script](demo-video-script.md) - Video recording guide
+- [Kaggle Notebook](https://www.kaggle.com/code/kavindhiranc/semantic-covid19-bigquery-ai-hackathon) - Complete implementation with code
 
 ###  Links
-- **Live Demo**: [Your demo URL if created]
-- **Video Demo**: [Your YouTube link]
+- **Live Demo**: [Intellidoc-Covid-Demo](https://storage.googleapis.com/intellidoc-covid-demo-2025/index.html)
 - **Hackathon Submission**: [Kaggle competition link]
 
 ---
@@ -160,29 +130,6 @@ FROM ML.GENERATE_TEXT(
 
 ---
 
-##  Repository Structure
-
-```
-semantic-covid-intelligence/
-├── README.md
-├── sql/
-│   ├── 01_data_preparation.sql
-│   ├── 02_embedding_generation.sql
-│   ├── 03_semantic_search.sql
-│   └── 04_ai_generation.sql
-├── notebooks/
-│   └── kaggle_submission.ipynb
-├── docs/
-│   ├── presentation-slides.md
-│   ├── demo-video-script.md
-│   └── architecture.md
-└── demo/
-    ├── index.html
-    ├── app.js
-    └── style.css
-```
-
----
 
 ##  Future Enhancements
 
