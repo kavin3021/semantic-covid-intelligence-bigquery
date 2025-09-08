@@ -163,8 +163,8 @@ Foundation for next-generation health intelligence systems that understand, anal
 ##  Author
 
 **Kavindhiran C**
-- **BigQuery AI Experience**: 2 Months
-- **Google Cloud Experience**: 3 Months  
+- **BigQuery AI Experience**: 5 Months
+- **Google Cloud Experience**: 6 Months  
 - **LinkedIn**: www.linkedin.com/in/kavindhiran-c-3a8421121
 - **Email**: kavindhiran97@gmail.com
 
